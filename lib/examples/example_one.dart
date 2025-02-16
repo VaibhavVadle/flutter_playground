@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class ExampleOne extends StatelessWidget {
   const ExampleOne({
@@ -36,18 +39,60 @@ class MasterPainter extends CustomPainter {
     paint.style = PaintingStyle.stroke;
     Offset center = Offset(size.width / 2, size.height / 2);
     Rect rect = Rect.fromLTRB(20, 20, 200, 300);
+    // ---->
     // canvas.drawLine(Offset.zero, Offset(size.width, size.height), paint);
     // canvas.drawLine(Offset(size.width, 0), Offset(0, size.height), paint);
+    // ---->
     // canvas.drawCircle(center, 50, paint);
+    // ---->
     // canvas.drawRect(
     //     Rect.fromCenter(center: center, width: 200, height: 300), paint);
     // canvas.drawRect(Rect.fromLTWH(20, 20, size.width, size.height), paint);
     // canvas.drawRect(rect, paint);
+    // ---->
     // canvas.drawOval(rect, paint);
     // canvas.drawOval(Rect.fromCircle(center: Offset.zero, radius: 20), paint);
+    // ---->
     // canvas.drawRRect(RRect.fromRectAndRadius(rect, Radius.circular(20)), paint);
     // canvas.drawRRect(RRect.fromRectAndCorners(rect,bottomRight: Radius.circular(20)), paint);
     // canvas.drawRRect(RRect.fromRectXY(rect, 10, 20), paint);
+    // ---->
+    // Rect bigRect = Rect.fromLTRB(10, 20, 100, 200);
+    // RRect bigRRect = RRect.fromRectXY(bigRect, 75, 25);
+    // Rect smallRect = Rect.fromLTRB(20, 30, 100, 190);
+    // RRect smallRRect = RRect.fromRectXY(smallRect, 75, 25);
+    // paint.style = PaintingStyle.fill;
+    // canvas.drawDRRect(bigRRect, smallRRect, paint);
+    // ---->
+    // canvas.drawColor(Colors.blue, BlendMode.src);
+    // ---->
+    // paint.shader = ui.Gradient.linear(
+    //   Offset.zero,
+    //   Offset(size.width, size.height),
+    //   [Colors.green, Colors.blue],
+    // );
+    // canvas.clipRect(Offset.zero & size);
+    // canvas.drawPaint(paint);
+    // ---->
+    // final List<Offset> points = <Offset>[
+    //   Offset.zero,
+    //   Offset(size.width, 0),
+    //   Offset(size.width / 2, size.height / 2),
+    //   Offset.zero,
+    // ]; // ‹Offset>[]
+    // canvas.drawPoints(ui.PointMode.polygon, points, paint);
+    // ----> More optimized than drawPoints
+    final Float32List points = Float32List.fromList([
+      0,
+      0,
+      size.width,
+      0,
+      size.width / 2,
+      size.height / 2,
+      0,
+      0,
+    ]);
+    canvas.drawRawPoints(ui.PointMode.polygon, points, paint);
   }
 
   @override

@@ -15,9 +15,9 @@ class PlaygroundApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.grey.shade300,
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey.shade300),
         useMaterial3: true,
       ),
       home: HomeScreen(),

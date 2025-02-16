@@ -82,17 +82,29 @@ class MasterPainter extends CustomPainter {
     // ]; // ‹Offset>[]
     // canvas.drawPoints(ui.PointMode.polygon, points, paint);
     // ----> More optimized than drawPoints
-    final Float32List points = Float32List.fromList([
-      0,
-      0,
-      size.width,
-      0,
-      size.width / 2,
-      size.height / 2,
-      0,
-      0,
-    ]);
-    canvas.drawRawPoints(ui.PointMode.polygon, points, paint);
+    // final Float32List points = Float32List.fromList([
+    //   0,
+    //   0,
+    //   size.width,
+    //   0,
+    //   size.width / 2,
+    //   size.height / 2,
+    //   0,
+    //   0,
+    // ]);
+    // canvas.drawRawPoints(ui.PointMode.polygon, points, paint);
+    // ---->
+    Paint newPaint = Paint()
+      ..strokeWidth = 2
+      ..color = Colors.black
+      ..style = PaintingStyle.fill;
+    Path path = Path()
+      ..addOval(Rect.fromCenter(
+          center: Offset(size.width / 2, size.height / 2),
+          width: size.width / 2,
+          height: size.height / 2));
+    canvas.drawShadow(path, Colors.blue, 10, false);
+    canvas.drawPath(path, newPaint);
   }
 
   @override

@@ -44,13 +44,32 @@ class _ExampleTwoState extends State<ExampleTwo> {
         child: Container(
           color: Colors.grey.shade300,
           child: CustomPaint(
-            painter: CustomImagePainter(imageInfoNotifier: imageInfoNotifier),
+            painter: CustomTextPainter(),
+            // painter: CustomImagePainter(imageInfoNotifier: imageInfoNotifier),
             size: Size(300, 400),
           ),
         ),
       ),
     );
   }
+}
+
+class CustomTextPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    ui.ParagraphStyle paragraphStyle =
+        ui.ParagraphStyle(fontSize: 18, fontWeight: FontWeight.w600);
+    ui.TextStyle textStyle = ui.TextStyle(color: Colors.black);
+    ui.ParagraphBuilder paragraphBuilder = ui.ParagraphBuilder(paragraphStyle);
+    paragraphBuilder.pushStyle(textStyle);
+    paragraphBuilder.addText("Hello world!");
+    ui.Paragraph paragraph = paragraphBuilder.build();
+    paragraph.layout(ui.ParagraphConstraints(width: size.width));
+    canvas.drawParagraph(paragraph, Offset.zero);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
 
 class CustomImagePainter extends CustomPainter {

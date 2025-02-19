@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/examples/example_one.dart';
+import 'package:flutter_playground/examples/example_three.dart';
 import 'package:flutter_playground/examples/example_two.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -39,6 +40,17 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 child: Text("Example 2"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExampleThree(title: "Example 3"),
+                    ),
+                  );
+                },
+                child: Text("Example 3"),
               ),
             ],
           ),

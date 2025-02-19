@@ -83,53 +83,58 @@ class CustomImagePainter extends CustomPainter {
       ..strokeWidth = 2
       ..color = Colors.black;
     ui.Image? image = imageInfoNotifier.value;
+    Rect rectHalfCanvasSize = Offset.zero & size /2;
+    // ----> For rendering particular part of image
+    // canvas.clipRect(rectHalfCanvasSize);
+    // canvas.clipRRect(RRect.fromRectAndRadius(rectHalfCanvasSize, Radius.circular(12)));
+    canvas.clipPath(Path()..addOval(rectHalfCanvasSize));
     if (image != null) {
-      // canvas.drawImage(image, Offset.zero, paint);
+      canvas.drawImage(image, Offset.zero, paint);
       // ---->
       // Size imgSize = Size(image.width.toDouble(), image.height.toDouble());
       // Rect imgRect = Offset.zero & imgSize;
       // Rect canvasRect = Offset.zero & size;
       // canvas.drawImageRect(image, imgRect, canvasRect, paint);
       // ---->
-      List<RSTransform> transforms = [
-        RSTransform.fromComponents(
-          rotation: 0,
-          scale: 1,
-          anchorX: 0,
-          anchorY: 0,
-          translateX: 0,
-          translateY: 0,
-        ),
-        RSTransform.fromComponents(
-          rotation: 0,
-          scale: 1.5,
-          anchorX: 0,
-          anchorY: 0,
-          translateX: 100,
-          translateY: 100,
-        ),
-        RSTransform.fromComponents(
-          rotation: 0.28,
-          scale: 1,
-          anchorX: 0,
-          anchorY: 0,
-          translateX: 200,
-          translateY: 300,
-        ),
-      ];
-
-      List<Rect> rects = [
-        const Rect.fromLTWH(0, 0, 100, 100),
-        const Rect.fromLTWH(100, 100, 100, 100),
-        const Rect.fromLTWH(200, 300, 100, 100),
-      ];
-
-      List<Color> colors = [
-        Colors.white.withOpacity(0.5),
-        Colors.red.withOpacity(0.5),
-        Colors.blue.withOpacity(0.5),
-      ];
-      canvas.drawAtlas(image, transforms, rects, colors, BlendMode.plus, null, paint);
+      // List<RSTransform> transforms = [
+      //   RSTransform.fromComponents(
+      //     rotation: 0,
+      //     scale: 1,
+      //     anchorX: 0,
+      //     anchorY: 0,
+      //     translateX: 0,
+      //     translateY: 0,
+      //   ),
+      //   RSTransform.fromComponents(
+      //     rotation: 0,
+      //     scale: 1.5,
+      //     anchorX: 0,
+      //     anchorY: 0,
+      //     translateX: 100,
+      //     translateY: 100,
+      //   ),
+      //   RSTransform.fromComponents(
+      //     rotation: 0.28,
+      //     scale: 1,
+      //     anchorX: 0,
+      //     anchorY: 0,
+      //     translateX: 200,
+      //     translateY: 300,
+      //   ),
+      // ];
+      //
+      // List<Rect> rects = [
+      //   const Rect.fromLTWH(0, 0, 100, 100),
+      //   const Rect.fromLTWH(100, 100, 100, 100),
+      //   const Rect.fromLTWH(200, 300, 100, 100),
+      // ];
+      //
+      // List<Color> colors = [
+      //   Colors.white.withOpacity(0.5),
+      //   Colors.red.withOpacity(0.5),
+      //   Colors.blue.withOpacity(0.5),
+      // ];
+      // canvas.drawAtlas(image, transforms, rects, colors, BlendMode.plus, null, paint);
     }
   }
 

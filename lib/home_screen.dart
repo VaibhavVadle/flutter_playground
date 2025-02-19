@@ -24,33 +24,33 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BasicOne(title: "Example 1"),
+                      builder: (context) => BasicOne(title: "Basic 1"),
                     ),
                   );
                 },
-                child: Text("Example 1"),
+                child: Text("Basic 1"),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BasicTwo(title: "Example 2"),
+                      builder: (context) => BasicTwo(title: "Basic 2"),
                     ),
                   );
                 },
-                child: Text("Example 2"),
+                child: Text("Basic 2"),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BasicThree(title: "Example 3"),
+                      builder: (context) => BasicThree(title: "Basic 3"),
                     ),
                   );
                 },
-                child: Text("Example 3"),
+                child: Text("Basic 3"),
               ),
             ],
           ),

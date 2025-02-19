@@ -3,8 +3,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-class ExampleOne extends StatelessWidget {
-  const ExampleOne({
+class BasicOne extends StatelessWidget {
+  const BasicOne({
     super.key,
     required this.title,
   });

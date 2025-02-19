@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-class ExampleTwo extends StatefulWidget {
-  const ExampleTwo({
+class BasicTwo extends StatefulWidget {
+  const BasicTwo({
     super.key,
     required this.title,
   });
@@ -10,10 +10,10 @@ class ExampleTwo extends StatefulWidget {
   final String title;
 
   @override
-  State<ExampleTwo> createState() => _ExampleTwoState();
+  State<BasicTwo> createState() => _BasicTwoState();
 }
 
-class _ExampleTwoState extends State<ExampleTwo> {
+class _BasicTwoState extends State<BasicTwo> {
   ValueNotifier<ui.Image?> imageInfoNotifier = ValueNotifier<ui.Image?>(null);
 
   @override

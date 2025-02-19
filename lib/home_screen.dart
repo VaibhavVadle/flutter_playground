@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/examples/example_one.dart';
-import 'package:flutter_playground/examples/example_three.dart';
-import 'package:flutter_playground/examples/example_two.dart';
+import 'package:flutter_playground/basics/basic_one.dart';
+import 'package:flutter_playground/basics/basic_three.dart';
+import 'package:flutter_playground/basics/basic_two.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ExampleOne(title: "Example 1"),
+                      builder: (context) => BasicOne(title: "Example 1"),
                     ),
                   );
                 },
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ExampleTwo(title: "Example 2"),
+                      builder: (context) => BasicTwo(title: "Example 2"),
                     ),
                   );
                 },
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ExampleThree(title: "Example 3"),
+                      builder: (context) => BasicThree(title: "Example 3"),
                     ),
                   );
                 },

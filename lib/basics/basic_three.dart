@@ -64,7 +64,8 @@ class SaveCanvasLayerCustomPainter extends CustomPainter {
             width: 100,
             height: 100),
         Paint()..color = Colors.orange);
-    canvas.saveLayer(const Rect.fromLTWH(0, 0, 200, 200), Paint()..color = Colors.transparent.withValues(alpha: 0.7));
+    canvas.saveLayer(const Rect.fromLTWH(0, 0, 200, 200),
+        Paint()..color = Colors.transparent.withValues(alpha: 0.7));
     canvas.drawRect(
         const Rect.fromLTWH(0, 0, 200, 200), Paint()..color = Colors.blue);
     canvas.drawRect(

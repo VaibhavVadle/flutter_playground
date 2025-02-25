@@ -19,7 +19,8 @@ class BasicFour extends StatelessWidget {
         child: Container(
           color: Colors.grey.shade300,
           child: CustomPaint(
-            painter: MasterPainter(),
+            // painter: MasterPainter(),
+            painter: CustomCurvePainter(),
             size: Size(300, 400),
           ),
         ),
@@ -82,4 +83,43 @@ class MasterPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+}
+
+class CustomCurvePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..strokeWidth = 2
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke;
+
+    Path path = Path();
+    // ---->
+    // path.moveTo(10, 0);
+    // path.lineTo(size.width /2, 0);
+    // path.relativeMoveTo(10, 0);
+    // path.relativeLineTo(50, 0);
+    // ---->
+    // path.moveTo(0, size.height / 2);
+    // Parabola - =1
+    // path.conicTo(size.width / 2, size.height, size.width, size.height / 2, 1);
+    // Hyperbola - >1
+    // path.conicTo(size.width / 2, size.height, size.width, size.height / 2, 2);
+    // Ellipse - <1
+    // path.conicTo(size.width / 2, size.height, size.width, size.height / 2, 0.5);
+    // Relative conicTo
+    // path.relativeConicTo(size.width / 2, size.height / 2, size.width, 0, 0.5);
+    // canvas.drawPath(path, paint);
+    // ---->
+    path.moveTo(size.width / 2, 0);
+    // path.quadraticBezierTo(
+    //     size.width, size.height / 2, size.width / 2, size.height);
+    // path.relativeQuadraticBezierTo(
+    //     size.width / 2, size.height / 2, 0, size.height);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -111,11 +111,16 @@ class CustomCurvePainter extends CustomPainter {
     // path.relativeConicTo(size.width / 2, size.height / 2, size.width, 0, 0.5);
     // canvas.drawPath(path, paint);
     // ---->
-    path.moveTo(size.width / 2, 0);
+    // path.moveTo(size.width / 2, 0);
     // path.quadraticBezierTo(
     //     size.width, size.height / 2, size.width / 2, size.height);
     // path.relativeQuadraticBezierTo(
     //     size.width / 2, size.height / 2, 0, size.height);
+    // ---->
+    path.moveTo(0, size.height / 2);
+    // path.cubicTo(0, size.height / 8, size.width, size.height, size.width, size.height /2);
+    path.relativeCubicTo(0, -((size.height / 2) - (size.height / 8)),
+        size.width, size.height / 2, size.width, 0);
 
     canvas.drawPath(path, paint);
   }

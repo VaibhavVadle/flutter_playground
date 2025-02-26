@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/basics/basic_five.dart';
 import 'package:flutter_playground/basics/basic_four.dart';
 import 'package:flutter_playground/basics/basic_one.dart';
 import 'package:flutter_playground/basics/basic_three.dart';
@@ -63,6 +64,17 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 child: Text("Basic 4"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BasicFive(title: "Basic 5"),
+                    ),
+                  );
+                },
+                child: Text("Basic 5"),
               ),
             ],
           ),

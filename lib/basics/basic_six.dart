@@ -45,12 +45,23 @@ class MasterPainter extends CustomPainter {
     Path path = Path()..addRect(rect);
     canvas.drawPath(path, orange);
     // ----> Reset used to reset the path and used to avoid override of canvas
-    path.reset();
-    path.addOval(rect);
+    // path.reset();
+    // path.addOval(rect);
     // canvas.drawPath(path, indigo);
+
     // ----> Path shifting
-    Path translatedPath = path.shift(Offset(size.width /4, 0));
-    canvas.drawPath(translatedPath, indigo);
+    // Path translatedPath = path.shift(Offset(size.width /4, 0));
+    // canvas.drawPath(translatedPath, indigo);
+
+    // ----> Path rotation
+    canvas.drawPath(path, orange);
+    Matrix4 transformation = Matrix4.identity();
+    // Note the value is in radian
+    transformation.rotateX(0.7853); // Radian of 90 degree is 0.7853
+
+    Path transformPath = path.transform(transformation.storage);
+    canvas.drawPath(transformPath, indigo);
+
   }
 
   @override

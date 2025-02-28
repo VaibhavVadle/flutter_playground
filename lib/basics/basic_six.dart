@@ -40,14 +40,17 @@ class MasterPainter extends CustomPainter {
       ..strokeWidth = 2;
     Rect rect = Rect.fromCircle(
       center: Offset(size.width / 2, size.height / 2),
-      radius: size.width / 2,
+      radius: size.width / 4,
     );
     Path path = Path()..addRect(rect);
     canvas.drawPath(path, orange);
     // ----> Reset used to reset the path and used to avoid override of canvas
     path.reset();
     path.addOval(rect);
-    canvas.drawPath(path, indigo);
+    // canvas.drawPath(path, indigo);
+    // ----> Path shifting
+    Path translatedPath = path.shift(Offset(size.width /4, 0));
+    canvas.drawPath(translatedPath, indigo);
   }
 
   @override

@@ -18,7 +18,8 @@ class BasicSix extends StatelessWidget {
         child: Container(
           color: Colors.grey.shade300,
           child: CustomPaint(
-            painter: MasterPainter(),
+            // painter: MasterPainter(),
+            painter: CalculateBoundPainter(),
             size: Size(300, 400),
           ),
         ),
@@ -61,9 +62,29 @@ class MasterPainter extends CustomPainter {
 
     Path transformPath = path.transform(transformation.storage);
     canvas.drawPath(transformPath, indigo);
-
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+}
+
+class CalculateBoundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = Colors.black
+      ..strokeWidth = 2;
+    Path path = Path()
+      ..moveTo(0, size.height / 2)
+      ..cubicTo(0, size.height / 8, size.width, size.height, size.width,
+          size.height / 2);
+    canvas.drawPath(path, paint);
+    Rect rect = path.getBounds();
+    print('Height ${rect.height} Width ${rect.width}');
+    canvas.drawRect(rect, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

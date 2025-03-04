@@ -80,9 +80,15 @@ class CalculateBoundPainter extends CustomPainter {
       ..cubicTo(0, size.height / 8, size.width, size.height, size.width,
           size.height / 2);
     canvas.drawPath(path, paint);
-    Rect rect = path.getBounds();
-    print('Height ${rect.height} Width ${rect.width}');
-    canvas.drawRect(rect, paint);
+    // ---->
+    // Rect rect = path.getBounds();
+    // print('Height ${rect.height} Width ${rect.width}');
+    // canvas.drawRect(rect, paint);
+    // ----> Extend path
+    Matrix4 transformation = Matrix4.identity()..rotateY(0.7853);
+    path.extendWithPath(Path()..addRect(path.getBounds()), Offset.zero,
+        matrix4: transformation.storage);
+    canvas.drawPath(path, paint);
   }
 
   @override

@@ -24,7 +24,7 @@ class _BasicTwoState extends State<BasicTwo> {
 
   void _getImage() {
     NetworkImage image = const NetworkImage(
-        "https://images.pexels.com/photos/11898887/pexels-photo-11898887.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2");
+        "https://images.pexels.com/photos/30994259/pexels-photo-30994259/free-photo-of-colorful-carnival-tent-with-starry-patterns.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2");
     ImageStream stream = image.resolve(ImageConfiguration.empty);
     ImageStreamListener streamListener = ImageStreamListener(
       (imageInfo, synchronousCall) {
@@ -82,14 +82,45 @@ class CustomImagePainter extends CustomPainter {
     Paint paint = Paint()
       ..strokeWidth = 2
       ..color = Colors.black;
+
+    // ---->
     ui.Image? image = imageInfoNotifier.value;
-    Rect rectHalfCanvasSize = Offset.zero & size /2;
+    Rect rectHalfCanvasSize = Offset.zero & size / 2;
+    Rect rectFullCanvasSize = Offset.zero & size;
     // ----> For rendering particular part of image
     // canvas.clipRect(rectHalfCanvasSize);
     // canvas.clipRRect(RRect.fromRectAndRadius(rectHalfCanvasSize, Radius.circular(12)));
-    canvas.clipPath(Path()..addOval(rectHalfCanvasSize));
+    // canvas.clipPath(Path()..addOval(rectHalfCanvasSize));
+    // ----> Use to invert colors of image
+    // paint.invertColors = true;
+    // ----> Blur image filter
+    // paint.imageFilter = ui.ImageFilter.blur(
+    //     sigmaX: 10,
+    //     sigmaY: 10,
+    //     tileMode: ui.TileMode.decal);
+    // ----> Dilate and erode image effect
+    // paint.imageFilter = ui.ImageFilter.dilate(
+    //   radiusX: 5,
+    //   radiusY: 1,
+    // );
+    // paint.imageFilter = ui.ImageFilter.erode(
+    //   radiusX: 1,
+    //   radiusY: 10,
+    // );
+    // ----> Compose filter use to apply filter layers
+    // paint.imageFilter = ui.ImageFilter.compose(
+    //   outer: ui.ImageFilter.blur(sigmaY: 10),
+    //   inner: ui.ImageFilter.dilate(radiusX: 10, radiusY: 10),
+    // );
+    // ----> Matrix allows transformation and image sampling
+    Matrix4 scaleMatrix = Matrix4.identity();
+    scaleMatrix.scale(1.2);
+    paint.imageFilter = ui.ImageFilter.matrix(scaleMatrix.storage,filterQuality: ui.FilterQuality.high);
+
+    canvas.clipRect(rectFullCanvasSize);
     if (image != null) {
       canvas.drawImage(image, Offset.zero, paint);
+
       // ---->
       // Size imgSize = Size(image.width.toDouble(), image.height.toDouble());
       // Rect imgRect = Offset.zero & imgSize;
